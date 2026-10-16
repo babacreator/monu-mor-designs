@@ -81,7 +81,7 @@ body.intro{overflow:hidden}
 .role{font-family:var(--title);font-weight:500;letter-spacing:.38em;margin-right:-.38em;font-size:clamp(.8rem,1.6vw,1.2rem);opacity:0;animation:fadeup 1.2s ease 3.9s forwards}
 .rotator{height:1.7em;overflow:hidden;color:var(--muted);font-size:clamp(.9rem,1.4vw,1.06rem);opacity:0;animation:fadeup 1.2s ease 4.2s forwards}
 .rotator ul{list-style:none;animation:rot 12s cubic-bezier(.7,0,.3,1) infinite}
-.rotator li{height:1.7em;line-height:1.7em}
+.rotator li{height:1.7em;line-height:1.7em;white-space:nowrap}
 .rotator b{color:var(--gold-2);font-weight:600}
 @keyframes rot{0%,20%{transform:translateY(0)}25%,45%{transform:translateY(-1.7em)}50%,70%{transform:translateY(-3.4em)}75%,95%{transform:translateY(-5.1em)}100%{transform:translateY(-6.8em)}}
 @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -91,6 +91,17 @@ body.intro{overflow:hidden}
 .scroll-ind i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:#fff;animation:drip 2s ease-in-out infinite}
 @keyframes drip{to{top:100%}}
 @media (max-width:640px){.hero-foot .hide-m{display:none}}
+@media (max-width:480px){
+  .nav{padding:16px var(--gut)} .nav.solid{padding-block:12px}
+  .logo{font-size:.78rem;letter-spacing:.24em;white-space:nowrap}
+  .nav-cta{height:36px;padding:0 14px;font-size:.78rem;white-space:nowrap}
+  .hide-xs{display:none}
+  .hero .kicker{font-size:.6rem;letter-spacing:.26em;white-space:nowrap}
+  .name{font-size:21vw;gap:0;line-height:.95}
+  .role{font-size:.72rem;letter-spacing:.24em;margin-right:-.24em;white-space:nowrap}
+  .rotator{font-size:.88rem}
+  .hero-face div{width:150vw}
+}
 @media (max-height:620px){.scroll-ind span{display:none}}
 
 /* ============ VILLA TOUR ============ */
@@ -130,6 +141,14 @@ body.intro{overflow:hidden}
   .rail{top:92px;transform:none;right:12px;gap:10px}
   .drag-hint{display:none}
 }
+@media (max-width:480px){
+  .card{padding:18px 18px 16px}
+  .card::before{top:18px;height:34px}
+  .card h2{font-size:1.25rem;margin:8px 0 6px}
+  .card p{font-size:.84rem;line-height:1.5}
+  .card ul{display:none}
+  .card .go{margin-top:14px;height:42px}
+}
 
 /* ============ QUOTATION ============ */
 .quote{padding:clamp(90px,12vw,160px) var(--gut) clamp(70px,9vw,120px);background:
@@ -155,7 +174,7 @@ body.intro{overflow:hidden}
 .fields{display:grid;gap:14px}
 .f{display:grid;gap:4px}
 .f label{font-size:.7rem;color:var(--dim);letter-spacing:.08em}
-.f input,.f select,.f textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-2);padding:8px 0 9px;font-size:.98rem;color:var(--text);outline:none;border-radius:0;transition:border-color .25s}
+.f input,.f select,.f textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-2);padding:8px 0 9px;font-size:16px;color:var(--text);outline:none;border-radius:0;transition:border-color .25s}
 .f select{appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23c8a565' stroke-width='1.4'/%3E%3C/svg%3E") right 4px center no-repeat;padding-right:20px;cursor:pointer}
 .f select option{background:#121317;color:var(--text)}
 .f textarea{resize:vertical;min-height:40px}
@@ -230,7 +249,7 @@ footer{border-top:1px solid var(--line);padding:46px var(--gut) 40px;display:fle
 
 <header class="nav" id="nav">
   <a class="logo" href="#top">MOR <span>·</span> DESIGNS</a>
-  <a class="nav-cta" href="#quote"><svg><use href="#i-wa"/></svg>Get Quotation</a>
+  <a class="nav-cta" href="#quote"><svg><use href="#i-wa"/></svg><span class="hide-xs">Get&nbsp;</span>Quotation</a>
 </header>
 
 <main id="top">
@@ -246,11 +265,11 @@ footer{border-top:1px solid var(--line);padding:46px var(--gut) 40px;display:fle
       <p class="role">INTERIOR &amp; EXTERIOR DESIGNER</p>
       <div class="rotator" aria-label="Elevations, interiors, 3D design and turnkey homes">
         <ul aria-hidden="true">
-          <li>Designing <b>front elevations</b> that stop the street</li>
-          <li>Crafting <b>interiors</b> made for the way you live</li>
-          <li>Showing your home in <b>3D</b> before it's built</li>
-          <li>Delivering <b>turnkey homes</b>, ready to move in</li>
-          <li>Designing <b>front elevations</b> that stop the street</li>
+          <li><b>Front elevations</b> that stop the street</li>
+          <li><b>Interiors</b> made for how you live</li>
+          <li>Your home in <b>3D</b> before it's built</li>
+          <li><b>Turnkey homes</b>, ready to move in</li>
+          <li><b>Front elevations</b> that stop the street</li>
         </ul>
       </div>
     </div>
@@ -739,7 +758,7 @@ document.querySelectorAll(".rv").forEach(el => io.observe(el));
     const ang = reduce ? 0 : goal.orbit * Math.sin(tsec * .12) * .35;
     const c = Math.cos(ang), s = Math.sin(ang), x = tmp.x * c - tmp.z * s, z = tmp.x * s + tmp.z * c; tmp.x = x; tmp.z = z;
     const narrow = camera.aspect < .9;
-    if (narrow) tmp.multiplyScalar(1.5);
+    if (narrow) tmp.multiplyScalar(Math.min(2, .85 / camera.aspect));   // portrait phones: pull back so rooms fit the width
     camera.position.copy(st.look).add(tmp);
     if (!reduce) { camera.position.x += Math.sin(tsec * .5) * .25; camera.position.y += Math.sin(tsec * .37) * .15; }
     camera.lookAt(st.look);
@@ -748,7 +767,7 @@ document.querySelectorAll(".rv").forEach(el => io.observe(el));
     const w = canvas.clientWidth, h = canvas.clientHeight;
     const side = cards[activeCard] && cards[activeCard].classList.contains("l") ? -1 : 1;
     offX += ((narrow ? 0 : side * w * .14) - offX) * k;
-    camera.setViewOffset(w, h, offX, narrow ? h * .17 : 0, w, h);
+    camera.setViewOffset(w, h, offX, narrow ? h * .13 : 0, w, h);
     renderer.render(scene, camera);
   }
   requestAnimationFrame(frame);
